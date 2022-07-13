@@ -1,0 +1,31 @@
+#Overview
+
+
+
+
+
+We have done following work:
+
+•	Taken an MRI image of brain from user.
+
+•	Resized input image.
+
+•	Applied RGB Filter.
+
+•	Applied Anisotropic Diffusion.
+
+•	Obtained Threshold value in project through Hit and Trial technique.
+
+•	Separating the Threshold-Area image from input image.
+
+•	Separating the High-Dense-Area and putting Boundary box in the image
+
+•	Output Images with previous task.
+
+•	Show the tumor alone in separated image using threshold values
+
+•	Show the tumor outline on another image
+
+•	Show the tumor outline in the separate image
+
+•	Applied the Prewit-filter also, to show the tumor region in another view
