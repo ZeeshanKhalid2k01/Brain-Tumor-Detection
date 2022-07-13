@@ -1,2 +1,38 @@
 # Brain-Tumor-Detection
 Project was developed on MATLAB to detection tumor area from an MRI IMage
+
+
+#Overview
+We have done following work:
+
+•	Taken an MRI image of brain from user.
+•	Resized input image.
+•	Applied RGB Filter.
+•	Applied Anisotropic Diffusion.
+•	Obtained Threshold value in project through Hit and Trial technique.
+•	Separating the Threshold-Area image from input image.
+•	Separating the High-Dense-Area and putting Boundary box in the image
+•	Output Images with previous task.
+•	Show the tumor alone in separated image using threshold values
+•	Show the tumor outline on another image
+•	Show the tumor outline in the separate image
+•	Applied the Prewit-filter also, to show the tumor region in another view
+
+#Description
+In this project, require image path is firstly given to program and then it is resized to appropriate size 256x256. After resizing the image smoothing filter has been applied. There can be various types of filters to remove noise, but here we have used the Anisotropic diffusion filter because this filter will not make the edges of picture muddy, since it is tumor detection project, proper finding of tumor with its clear edges is primary goal.
+
+From the formula of anisotropic diffusion:
+It=div(c(x,y,t)∇I)=c(x,y,t)∆I+∇C.∇I
+Here all the anisotropic diffusion equation depends on ‘c’. Further details about this filter will be given, if required.
+
+After filtering, for reducing the chance of exception, we again put our diffused image in uint8 format and also it is checked that image should not be in RGB because further processes are done on grayscale images. These tasks are done using uint8(image_input) and image_input=rgb2gray(image_input) functions.
+
+Then the maximum and minimum value of input image are obtained and then taken an average for threshold, since average was not giving us right answer therefore, we incremented X (obtained through Hit & Trial) for right threshold. These tasks are done using min() and max() functions.
+
+After that, using nested loop of X*Y coordinate which is equal to 256X256. The threshold values are extracted from the original image. Now from the newly obtained image from pre-processing, further operations are fulfilled in which regionprops( ) function is used to find Solidity, Area, BoundingBox properties for an image. Now from these properties Tumor image is extracted separately.
+
+Now from the extracted tumor image, we obtained the eroded part of the image. The main reason to find the eroded part is to make the outline around the tumor according to shape to shape and from these tasks, another separate image could be extracted which have the tumor shape_outline marked on it. These above tasks are done using the concept of segmentation by getting some threshold values using Hit & Trial Techniques, if-else conditions and nested loops.
+
+Finally, after all these procedures, we added Prewit-filter and Canny-filter which was studied in the course. This filter was added on tumor region picture and then it was paired to original MRI image, fir clearer and better output view.
+
+Then after these things we got our final outputs. 
